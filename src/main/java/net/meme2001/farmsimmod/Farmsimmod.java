@@ -80,6 +80,7 @@ public class Farmsimmod
             event.accept(Moditems.TOMATEO_SEED);
             event.accept(ModBlock.WOODEN_FRIDAGE);
             event.accept(Moditems.STRAWBERRY_SEED);
+            event.accept(Moditems.ROTTEN_TOMATEOS.get());
 
 
 
