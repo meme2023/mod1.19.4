@@ -18,6 +18,8 @@ public class Moditems {
     public static final RegistryObject<Item> TOMATEO_SEED  = ITEMS.register("tomateo_seed",() -> new ItemNameBlockItem(ModBlock.TOMATEAO_CROP.get(),new Item.Properties()));
     public static final RegistryObject<Item> WOODEN_FRIDGE = ITEMS.register("wooden_fridge",() -> new ItemNameBlockItem(ModBlock.WOODEN_FRIDAGE .get(),new Item.Properties()));
     public static final RegistryObject<Item> STRAWBERRY_SEED  = ITEMS.register("strawberry_seed",() -> new ItemNameBlockItem(ModBlock.STRAWBERRY_CROP.get(),new Item.Properties()));
+    public static final RegistryObject<Item> ROTTEN_TOMATEOS = ITEMS.register("rotten_tomateo",() -> new Item(new Item.Properties().food(ModFoods.ROTTEN_TOMTEO)));
+
 
 
 

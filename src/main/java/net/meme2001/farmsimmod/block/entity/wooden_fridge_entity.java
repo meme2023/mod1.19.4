@@ -15,7 +15,9 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.block.ChestBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.ChestBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.client.model.data.ModelData;
 import net.minecraftforge.common.capabilities.Capability;
@@ -41,6 +43,7 @@ public class wooden_fridge_entity extends BlockEntity implements MenuProvider {
 
 
 
+
     private final ItemStackHandler itemstackhandler = new ItemStackHandler(18) {
         @Override
         protected void onContentsChanged(int slot) {
@@ -50,6 +53,8 @@ public class wooden_fridge_entity extends BlockEntity implements MenuProvider {
         @Override
         public boolean isItemValid(int slot, @NotNull ItemStack stack) {
           if(slot <= 18  &&stack.getItem() == Moditems.TOMATEOS.get() || stack.getItem() == Strewberry.get()|| stack.getItem() == VanllaItems.APPLE.get())
+
+
 
               return true;
             /*return switch (slot) {
@@ -74,7 +79,9 @@ public class wooden_fridge_entity extends BlockEntity implements MenuProvider {
 
 
                 default -> throw new IllegalStateException("Unexpected value: " + slot);
+
             };*/
+
             return false;
         }
 

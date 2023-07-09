@@ -1,18 +1,19 @@
 package net.meme2001.farmsimmod.networking.packet;
 
 
-import net.meme2001.farmsimmod.block.ModBlock;
-import net.meme2001.farmsimmod.block.entity.ModBlokEntity;
+import com.mojang.authlib.minecraft.client.MinecraftClient;
 import net.meme2001.farmsimmod.item.Moditems;
-import net.meme2001.farmsimmod.screen.WoodenFridgeMenu;
-import net.minecraft.ChatFormatting;
+import net.minecraft.client.Minecraft;
 import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.ChestBlock;
+import net.minecraft.world.level.block.entity.ChestBlockEntity;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.network.NetworkEvent;
 
 import java.util.ArrayList;
@@ -48,6 +49,7 @@ public class DaysC2SPacket {
             ServerPlayer player = context.getSender();
             ServerLevel level = context.getSender().getLevel();
             Inventory in = context.getSender().getInventory();
+            AbstractContainerMenu fir= context.getSender().containerMenu;
 
 
 
@@ -58,17 +60,7 @@ public class DaysC2SPacket {
                 age=false;
 
 
-            } else if (in.contains(new ItemStack(Moditems.TOMATEOS.get()))&&age==false) {
-                age = true;
-                player.sendSystemMessage(Component.translatable(MESSAGE_IS_Rotten).withStyle(ChatFormatting.RED));
-
-
             }
-
-
-
-
-
 
         });
 

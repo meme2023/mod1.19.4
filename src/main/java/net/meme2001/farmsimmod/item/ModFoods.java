@@ -6,5 +6,8 @@ public class ModFoods {
     public static final FoodProperties TOMTEO = (new FoodProperties.Builder()).nutrition(3).saturationMod(0.2F).build();
     public static final FoodProperties Strewberry = (new FoodProperties.Builder()).nutrition(3).saturationMod(0.2F).build();
 
+    public static final FoodProperties ROTTEN_TOMTEO = (new FoodProperties.Builder()).nutrition(3).saturationMod(0.2F).build();
+
+
 
 }
