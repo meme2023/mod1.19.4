@@ -2,6 +2,7 @@ package net.meme2001.farmsimmod.networking;
 
 import net.meme2001.farmsimmod.Farmsimmod;
 import net.meme2001.farmsimmod.networking.packet.DaysC2SPacket;
+import net.meme2001.farmsimmod.networking.packet.chestinfoC2SPacket;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraftforge.network.NetworkDirection;
@@ -30,6 +31,15 @@ public class ModPacket {
                 .encoder(DaysC2SPacket::toBytes)
                 .consumerMainThread(DaysC2SPacket::handle)
                 .add();
+
+        net.messageBuilder(chestinfoC2SPacket.class, id(), NetworkDirection.PLAY_TO_SERVER)
+                .decoder(chestinfoC2SPacket::new)
+                .encoder(chestinfoC2SPacket::toBytes)
+                .consumerMainThread(chestinfoC2SPacket::handle)
+                .add();
+
+
+
     }
     public static <MSG> void SendToSever (MSG message){
         INSTANCE.sendToServer(message);

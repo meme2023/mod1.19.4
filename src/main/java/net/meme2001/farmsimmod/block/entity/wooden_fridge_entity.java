@@ -50,6 +50,8 @@ public class wooden_fridge_entity extends BlockEntity implements MenuProvider {
             setChanged();
         }
 
+
+
         @Override
         public boolean isItemValid(int slot, @NotNull ItemStack stack) {
           if(slot <= 18  &&stack.getItem() == Moditems.TOMATEOS.get() || stack.getItem() == Strewberry.get()|| stack.getItem() == VanllaItems.APPLE.get())

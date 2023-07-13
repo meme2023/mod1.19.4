@@ -3,18 +3,27 @@ package net.meme2001.farmsimmod.networking.packet;
 
 import com.mojang.authlib.minecraft.client.MinecraftClient;
 import net.meme2001.farmsimmod.item.Moditems;
+import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.NonNullList;
 import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.block.AbstractChestBlock;
 import net.minecraft.world.level.block.ChestBlock;
 import net.minecraft.world.level.block.entity.ChestBlockEntity;
+import net.minecraft.world.level.block.entity.LidBlockEntity;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.network.NetworkEvent;
+import org.checkerframework.checker.units.qual.C;
 
 import java.util.ArrayList;
 import java.util.function.Supplier;
@@ -22,8 +31,12 @@ import java.util.function.Supplier;
 
 
 public class DaysC2SPacket {
+
+
+
     boolean age = true;
     ArrayList<ItemStack> food = new ArrayList<>();
+
 
 
 
@@ -42,6 +55,7 @@ public class DaysC2SPacket {
 
     }
 
+
     public boolean handle(Supplier<NetworkEvent.Context> supplier) {
         NetworkEvent.Context context = supplier.get();
         context.enqueueWork(() -> {
@@ -49,18 +63,26 @@ public class DaysC2SPacket {
             ServerPlayer player = context.getSender();
             ServerLevel level = context.getSender().getLevel();
             Inventory in = context.getSender().getInventory();
-            AbstractContainerMenu fir= context.getSender().containerMenu;
 
 
 
             if (player.getInventory().contains(new ItemStack(Moditems.TOMATEOS.get()))&&age==true) {
-                player.getInventory().add((new ItemStack(Moditems.STRAWBERRY_SEED.get())));
+                player.getInventory().add((new ItemStack(Moditems.ROTTEN_TOMATEOS.get())));
                 int i=  player.getInventory().findSlotMatchingItem(new ItemStack(Moditems.TOMATEOS.get()));
                 player.getInventory().removeItemNoUpdate(i);
+                player.sendSystemMessage(Component.translatable(MESSAGE_IS_Rotten).withStyle(ChatFormatting.DARK_PURPLE));
+
+
                 age=false;
 
 
             }
+
+
+
+
+
+
 
         });
 
